@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 @Repository
@@ -22,5 +23,10 @@ public class MemberRepository {
 
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login",memberDTO);
+    }
+
+
+    public MemberDTO findById(Long id) {
+        return sql.selectOne("Member.findById",id);
     }
 }
