@@ -11,9 +11,12 @@
 <html>
 <head>
     <title>Title</title>
+    <Link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="container">
     <h2>회원상세조회</h2>
     ${memberDetail}
+    </div>
 </body>
 </html>
