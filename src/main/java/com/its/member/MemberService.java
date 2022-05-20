@@ -38,4 +38,13 @@ public class MemberService {
         MemberDTO memberDTO = memberRepository.findById(id);
         return memberDTO;
     }
+
+    public boolean delete(Long id) {
+        int memberDelete = memberRepository.delete(id);
+        if(memberDelete > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

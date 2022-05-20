@@ -59,5 +59,15 @@ public class MemberController {
     }
 
 
+    @GetMapping("/delete")
+    public String delete(@RequestParam Long id){
+        boolean memberDelete = memberService.delete(id);
+        if(memberDelete){
+            // 회원 목록을 불러오기 위한 redirect 이용하여 findAll 주소 요청
+            return "redirect:/findAll";
+        }else {
+            return "detail";
+        }
+    }
 
 }
