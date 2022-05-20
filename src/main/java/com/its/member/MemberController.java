@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +112,21 @@ public class MemberController {
     @GetMapping("/response-test2")
     public @ResponseBody List<MemberDTO> responseTest2(){
         return memberService.findAll();
+    }
+
+
+    @GetMapping("/detail-ajax")
+    public @ResponseBody MemberDTO findByIdAjax(@RequestParam("id") Long id) {
+        System.out.println("id = " + id);
+        MemberDTO memberDTO = memberService.findById(id);
+        return memberDTO;
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "index";
     }
 
 

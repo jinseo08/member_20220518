@@ -19,6 +19,7 @@
     <a href="/">index로 이동</a><br>
     <button onclick="location.href ='/update-form'">수정</button>
     <button onclick="updateForm()">수정(함수호출)</button>
+    <button onclick="location.href ='/logout'">로그아웃</button>
 </body>
 <script>
 
