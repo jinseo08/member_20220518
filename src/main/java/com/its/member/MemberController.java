@@ -70,4 +70,30 @@ public class MemberController {
         }
     }
 
+    @GetMapping("/update-form")
+    public String updateForm(HttpSession session,Model model){
+        // 로그인을 한 상태기 때문에 세션에 id, memberId가 들어있고 여기서 세션에 있는 id를 가져온다.
+        Long updateId = (Long) session.getAttribute("id");
+        System.out.println("updateId = " + updateId);
+        //DB에서 해당 회원의 정보를 가져와서 그 정보를 가지고 update.jsp로 이동
+        MemberDTO memberDTO = memberService.findById(updateId);
+        model.addAttribute("updateMember", memberDTO);
+        return "update";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO){
+        System.out.println("MemberController.update");
+        System.out.println("memberDTO = " + memberDTO);
+        boolean updateResult = memberService.update(memberDTO);
+        if(updateResult){
+            // 해당 회원의 상세정보
+            // redirect에 memberDTO.getId()를 파라미터로 넘김
+            return "redirect:/detail?id=" + memberDTO.getId();
+        }else {
+            return null;
+        }
+    }
+
+
 }
