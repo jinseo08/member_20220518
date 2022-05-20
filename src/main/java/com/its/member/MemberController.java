@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -93,6 +90,27 @@ public class MemberController {
         }else {
             return null;
         }
+    }
+
+    @PostMapping("/duplicateCheck")
+    public @ResponseBody String duplicateCheck(@RequestParam String memberId){
+        System.out.println("memberId = " + memberId);
+        // memberId를 DB에서 중복값이 있는지 없는지 체크하고
+        // 없으면 ok, 있으면 no 라는 String 값을 리턴받으세요.
+        String checkResult = memberService.duplicateCheck(memberId);
+        // return checkResult; 를 하면 ok.jsp 또는 no.jsp를 찾기때문에 이렇게 쓰면 안됨
+        System.out.println("checkResult = " + checkResult);
+        return checkResult;
+    }
+
+    @GetMapping("/response-test")
+    public @ResponseBody String responseTest(){
+        return "main";
+    }
+
+    @GetMapping("/response-test2")
+    public @ResponseBody List<MemberDTO> responseTest2(){
+        return memberService.findAll();
     }
 
 

@@ -14,6 +14,8 @@
     <a href="save-form">회원가입</a><br>
     <a href="login-form">로그인 페이지</a><br>
     <a href="findAll">회원목록출력</a><br>
+    <a href="/response-test">Response Test</a><br>
+    <a href="/response-test2">Response Test2</a><br>
 
     로그인 회원 정보 : ${memberLogin}<br>
     세션에 담은 memberId: ${sessionScope.memberId}<br>
