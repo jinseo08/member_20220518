@@ -55,6 +55,7 @@
             url: "detail-ajax", // 요청주소(컨트롤러 주소값)
             data: {"id": id}, // 전송하는 파라미터
             dataType: "json", // 리턴받을 데이터 형식
+            //json : 자바스크립트의 데이터 타입으로 문자열, 정수형 등 모든 타입을 담을 수 있음
             success: function (result) {
                 console.log(result)
                 let output = "<table class='table table-striped'>";
@@ -75,7 +76,7 @@
                 detail.innerHTML = output;
             },
             error: function () {
-                alert("오타체크");
+                alert("오타체크"); //생략 가능 (쉽게 if else 개념으로 알아두기)
             }
         });
 
